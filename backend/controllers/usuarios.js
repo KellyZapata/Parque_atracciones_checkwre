@@ -1,4 +1,4 @@
-const Usuario = require("../modelos/usuario");
+const Usuario = require("../models/usuario");
 
 module.exports = {
     GetAll: (req, res) => {

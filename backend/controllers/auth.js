@@ -1,3 +1,7 @@
+const generador = require('password-generator');
+const bcrypt = require('bcrypt');
+const Usuario = require('../models/usuario');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     Login: (req, res) => {
@@ -8,11 +12,11 @@ module.exports = {
               token: "error",
               expiresIn: "error",
               role: "error",
-              message: "Correo electronico invalido."
+              message: "Correo electrónico invalido."
             });
           }
           fetchedUser=user;
-          return bcrypt.compare(req.body.contrasena, user.contrasena);
+          return bcrypt.compare(req.body.clave, user.clave);
         })
         .then(result =>{
           if(!result){
@@ -42,7 +46,8 @@ module.exports = {
         });
     },
     Signup: (req, res) => {
-        bcrypt.hash(req.body.contrasena, 10)
+        clave = generador(8, false);
+        bcrypt.hash(clave, 10)
         .then(hash => {
           const user = new Usuario({
             nombres : req.body.nombres,
@@ -50,13 +55,14 @@ module.exports = {
             telefono_fijo : req.body.telefono_fijo,
             telefono_celular : req.body.telefono_celular,
             correo_electronico : req.body.correo_electronico,
-            contrasena : hash,
+            clave : hash,
           });
 
           user.save()
             .then(result =>{
               res.status(201).json({
                 message : 'usuario creado',
+                clave: clave,
                 result: result
               });
             })
