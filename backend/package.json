@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Henrrypg/node#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "crypto-js": "^4.1.1",
