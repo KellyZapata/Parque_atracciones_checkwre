@@ -11,6 +11,8 @@ let UsuarioSchema = new  mongoose.Schema({
     cargo: { type: String, required: false },
     codigo_autenticacion: { type: String, required: false },
     roles: { type: Array, required: false, default: [] },
+    recuperar_clave: { type: String, required: false, default: false },
+    recuperar_clave_exp: { type: Date, required: false},
 });
 
 UsuarioSchema.plugin(uniqueValidator);

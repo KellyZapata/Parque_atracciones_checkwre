@@ -37,6 +37,7 @@ app.use((req,res,next)=>{
 });
 
 app.use("/api/auth", require("./routes/autenticacion"));
+app.use("/api/test", checkauth.VerifyRol(), require("./routes/test_login"));
 app.use("/api/adm", checkauth.VerifyRol("AppAdmin"), require("./routes/admin"));
 
 module.exports = app;

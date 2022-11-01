@@ -93,7 +93,12 @@
 						},
 						{
 							"key": "clave",
-							"value": "RxBaG31K",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "codigo",
+							"value": "741119",
 							"type": "text"
 						}
 					]
@@ -107,6 +112,91 @@
 						"api",
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password recovery - token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "correo_electronico",
+							"value": "xteams.hp@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/api/auth/resetpassword",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password recovery - token Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "clave",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/api/auth/resetpassword/1cd45589da6074cc073ce03141da5d4eca9d88f4",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"resetpassword",
+						"1cd45589da6074cc073ce03141da5d4eca9d88f4"
 					]
 				}
 			},
@@ -147,6 +237,87 @@
 						"api",
 						"adm",
 						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/api/adm/usuarios/63606121293b144e9b1991b2",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"adm",
+						"usuarios",
+						"63606121293b144e9b1991b2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test route",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/api/test/test",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"test",
+						"test"
 					]
 				}
 			},

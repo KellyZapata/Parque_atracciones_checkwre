@@ -1,6 +1,7 @@
 
 const jwt = require("jsonwebtoken");
 const Usuario = require("../models/usuario");
+const { TOKEN_SECRET } = require("../config");
 
 module.exports =  {
   VerifyRol: (rol) => {
@@ -10,7 +11,7 @@ module.exports =  {
 
       if (token == null) return res.sendStatus(401)
 
-      jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+      jwt.verify(token, TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403)
         usuario = Usuario.findById(user.userId, (err, usuario) => {
           if (err) return res.sendStatus(403)
