@@ -10,11 +10,11 @@ let UsuarioSchema = new  mongoose.Schema({
     clave: { type: String, required: false },
     cargo: { type: String, required: false },
     codigo_autenticacion: { type: String, required: false },
-    roles: { type: Array, required: false, default: [] },
+    roles: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Rol' } ],
     recuperar_clave: { type: String, required: false, default: false },
     recuperar_clave_exp: { type: Date, required: false},
 });
 
 UsuarioSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('Usuario', UsuarioSchema);
+module.exports = mongoose.model('Usuario', UsuarioSchema, 'usuarios');

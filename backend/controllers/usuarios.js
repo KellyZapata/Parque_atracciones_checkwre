@@ -1,23 +1,22 @@
 const Usuario = require("../models/usuario");
+const Rol = require("../models/rol");
 
 module.exports = {
-    GetAll: (req, res) => {
-        Usuario.find((err, usuarios) => {
-            if (err) {
-                res.send(err, 500);
-            }else{
-                res.json(usuarios);
-            }
-        });
+    GetAll: async (req, res) => {
+        try {
+            usuarios = await Usuario.find().populate('roles');
+            res.status(200).json(usuarios);
+        } catch (error) {
+            res.status(500).json(error);
+        }
     },
-    GetById: (req, res) => {
-        Usuario.findById(req.params.id, (err, usuario) => {
-            if (err) {
-                res.send(err, 500);
-            }else{
-                res.json(usuario);
-            }
-        });
+    GetById: async (req, res) => {
+        try {
+            usuario = await Usuario.findById(req.params.id).populate('roles');
+            res.status(200).json(usuario);
+        } catch (error) {
+            res.status(500).json(error);
+        }
     },
     Update: (req, res) => {
         var usuario = req.body;

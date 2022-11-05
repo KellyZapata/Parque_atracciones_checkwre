@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const config = require('./config.js');
 const bodyParser = require('body-parser');
 const checkauth = require('./middleware/check-auth');
+const mongan = require('morgan');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(mongan('dev'));
 
 mongoose.connect(config.MONGO_STRING, {useNewUrlParser: true , useUnifiedTopology: true})
 .then(()=>{
@@ -38,6 +40,9 @@ app.use((req,res,next)=>{
 
 app.use("/api/auth", require("./routes/autenticacion"));
 app.use("/api/test", checkauth.VerifyRol(), require("./routes/test_login"));
-app.use("/api/adm", checkauth.VerifyRol("AppAdmin"), require("./routes/admin"));
+
+
+app.use("/api/adm/usuarios", checkauth.VerifyRol(), require("./routes/usuarios"));
+app.use("/api/adm/roles", checkauth.VerifyRol(), require("./routes/roles"));
 
 module.exports = app;
