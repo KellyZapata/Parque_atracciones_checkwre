@@ -7,412 +7,1169 @@
 	},
 	"item": [
 		{
-			"name": "Signup",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "GetAllUsers",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "nombres",
-							"value": "Henrry",
-							"type": "text"
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/usuarios",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
 						{
-							"key": "apellidos",
-							"value": "Pulgarin",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/usuarios/63606121293b144e9b1991b2",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"usuarios",
+								"63606121293b144e9b1991b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test route",
+					"event": [
 						{
-							"key": "telefono_fijo",
-							"value": "11111",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/test/test",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById",
+					"event": [
 						{
-							"key": "telefono_celular",
-							"value": "22222",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "correo_electronico",
-							"value": "xteams.hp@gmail.com",
-							"type": "text"
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/usuarios/6359c6ed734485e52b8f54ae",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"usuarios",
+								"6359c6ed734485e52b8f54ae"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{domain}}/api/auth/signup",
-					"host": [
-						"{{domain}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"signup"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.environment.set(\"token\", jsonData.token);",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"name": "UpdateUser",
+					"event": [
 						{
-							"key": "correo_electronico",
-							"value": "xteams.hp@gmail.com",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "clave",
-							"value": "12345",
-							"type": "text"
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"roles\": [\n        \"6366b7d67b9a6b2c38b9e6d9\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "codigo",
-							"value": "741119",
-							"type": "text"
+						"url": {
+							"raw": "{{domain}}/api/adm/usuarios/635e9bc8d14ff3c6addf7ffa",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"usuarios",
+								"635e9bc8d14ff3c6addf7ffa"
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "{{domain}}/api/auth/login",
-					"host": [
-						"{{domain}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"login"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "password recovery - token",
-			"event": [
+			"name": "Auth",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.environment.set(\"token\", jsonData.token);",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"name": "login",
+					"event": [
 						{
-							"key": "correo_electronico",
-							"value": "xteams.hp@gmail.com",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "{{domain}}/api/auth/resetpassword",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"auth",
-						"resetpassword"
-					]
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo_electronico",
+									"value": "xteams.hp@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "codigo",
+									"value": "741119",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombres",
+									"value": "Henrry",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "Pulgarin",
+									"type": "text"
+								},
+								{
+									"key": "telefono_fijo",
+									"value": "11111",
+									"type": "text"
+								},
+								{
+									"key": "telefono_celular",
+									"value": "22222",
+									"type": "text"
+								},
+								{
+									"key": "correo_electronico",
+									"value": "xteams.hp@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/signup",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password recovery - token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo_electronico",
+									"value": "xteams.hp@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/resetpassword",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password recovery - token Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "clave",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/resetpassword/1cd45589da6074cc073ce03141da5d4eca9d88f4",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resetpassword",
+								"1cd45589da6074cc073ce03141da5d4eca9d88f4"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "password recovery - token Copy",
-			"event": [
+			"name": "Roles",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.environment.set(\"token\", jsonData.token);",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"name": "GetAllRoles",
+					"event": [
 						{
-							"key": "clave",
-							"value": "12345",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "{{domain}}/api/auth/resetpassword/1cd45589da6074cc073ce03141da5d4eca9d88f4",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"auth",
-						"resetpassword",
-						"1cd45589da6074cc073ce03141da5d4eca9d88f4"
-					]
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/roles",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/roles/63606121293b144e9b1991b2",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"roles",
+								"63606121293b144e9b1991b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRolById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/adm/roles/6359c6ed734485e52b8f54ae",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"roles",
+								"6359c6ed734485e52b8f54ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descripcion\": \"exm1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/roles/6359d3b5a65bffe31f6bf927",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"roles",
+								"6359d3b5a65bffe31f6bf927"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Rol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"AppAdmin\",\n    \"descripcion\": \"Administrador principal de la aplicación, único rol que puede gestionar usuarios y roles.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/roles",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"roles"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GetAllUsers",
-			"event": [
+			"name": "Departamentos",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "Create Departamento",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{domain}}/api/adm/usuarios",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"adm",
-						"usuarios"
-					]
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Risaralda\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/departamentos",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all departamentos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/departamentos",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByIdDepartamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/departamentos/6366c53ad07b0314761b4f0d",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"departamentos",
+								"6366c53ad07b0314761b4f0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Departamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Caldas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/departamentos/6366c53ad07b0314761b4f0d",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"departamentos",
+								"6366c53ad07b0314761b4f0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Departamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/departamentos/6366c53ad07b0314761b4f0d",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"departamentos",
+								"6366c53ad07b0314761b4f0d"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Delete User",
-			"event": [
+			"name": "Ciudades",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "Create Ciudad",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{domain}}/api/adm/usuarios/63606121293b144e9b1991b2",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"adm",
-						"usuarios",
-						"63606121293b144e9b1991b2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Test route",
-			"event": [
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Pereira\",\n    \"departamento\": \"6366c903590a9408bf4a642c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/ciudades",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"ciudades"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "Get all ciudades",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{domain}}/api/test/test",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"test",
-						"test"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetUserById",
-			"event": [
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/ciudades",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"ciudades"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "GetByIdCiudad",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{domain}}/api/adm/usuarios/6359c6ed734485e52b8f54ae",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"adm",
-						"usuarios",
-						"6359c6ed734485e52b8f54ae"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "UpdateUser",
-			"event": [
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/ciudades/6366c96bcb4a537184d588b5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"ciudades",
+								"6366c96bcb4a537184d588b5"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "Update Ciudad",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"roles\": [\n        \"AppAdmin\"\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{domain}}/api/adm/usuarios/6359d3b5a65bffe31f6bf927",
-					"host": [
-						"{{domain}}"
 					],
-					"path": [
-						"api",
-						"adm",
-						"usuarios",
-						"6359d3b5a65bffe31f6bf927"
-					]
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Dosquebradas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/ciudades/6366c96bcb4a537184d588b5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"ciudades",
+								"6366c96bcb4a537184d588b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/adm/ciudades/6366c96bcb4a537184d588b5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"adm",
+								"ciudades",
+								"6366c96bcb4a537184d588b5"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"variable": [
