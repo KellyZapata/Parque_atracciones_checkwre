@@ -45,5 +45,6 @@ app.use("/api/adm/roles", checkauth.VerifyRol(["AppAdmin"]), require("./routes/r
 app.use("/api/adm/departamentos", checkauth.VerifyRol(["AppAdmin"]), require("./routes/departamentos"));
 app.use("/api/adm/ciudades", checkauth.VerifyRol(["AppAdmin"]), require("./routes/ciudades"));
 app.use("/api/adm/parques", checkauth.VerifyRol(["AppAdmin"]), require("./routes/parques"));
+app.use("/api/adm/zonas", checkauth.VerifyRol(["AppAdmin"]), require("./routes/zonas"));
 
 module.exports = app;
