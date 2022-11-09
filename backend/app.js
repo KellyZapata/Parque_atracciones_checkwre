@@ -39,12 +39,11 @@ app.use((req,res,next)=>{
 });
 
 app.use("/api/auth", require("./routes/autenticacion"));
-app.use("/api/test", checkauth.VerifyRol(), require("./routes/test_login"));
 
-
-app.use("/api/adm/usuarios", checkauth.VerifyRol(), require("./routes/usuarios"));
-app.use("/api/adm/roles", checkauth.VerifyRol(), require("./routes/roles"));
-app.use("/api/adm/departamentos", checkauth.VerifyRol(), require("./routes/departamentos"));
-app.use("/api/adm/ciudades", checkauth.VerifyRol(), require("./routes/ciudades"));
+app.use("/api/adm/usuarios", checkauth.VerifyRol(["AppAdmin"]), require("./routes/usuarios"));
+app.use("/api/adm/roles", checkauth.VerifyRol(["AppAdmin"]), require("./routes/roles"));
+app.use("/api/adm/departamentos", checkauth.VerifyRol(["AppAdmin"]), require("./routes/departamentos"));
+app.use("/api/adm/ciudades", checkauth.VerifyRol(["AppAdmin"]), require("./routes/ciudades"));
+app.use("/api/adm/parques", checkauth.VerifyRol(["AppAdmin"]), require("./routes/parques"));
 
 module.exports = app;
