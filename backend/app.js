@@ -46,5 +46,8 @@ app.use("/api/adm/departamentos", checkauth.VerifyRol(["AppAdmin"]), require("./
 app.use("/api/adm/ciudades", checkauth.VerifyRol(["AppAdmin"]), require("./routes/ciudades"));
 app.use("/api/adm/parques", checkauth.VerifyRol(["AppAdmin"]), require("./routes/parques"));
 app.use("/api/adm/zonas", checkauth.VerifyRol(["AppAdmin"]), require("./routes/zonas"));
+app.use("/api/adm/planes", checkauth.VerifyRol(["AppAdmin"]), require("./routes/planes"));
+app.use("/api/adm/atracciones", checkauth.VerifyRol(["AppAdmin"]), require("./routes/atracciones"));
+app.use("/api/adm/puestos_comida", checkauth.VerifyRol(["AppAdmin"]), require("./routes/puestos_comida"));
 
 module.exports = app;
