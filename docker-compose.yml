@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: backend
+    container_name: backend
+    restart: unless-stopped
+    networks:
+      - mintic_network
+
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+    depends_on:
+      - backend
+    networks:
+      - mintic_network
+
+networks:
+  mintic_network:
+    driver: bridge
