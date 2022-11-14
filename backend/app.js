@@ -49,5 +49,7 @@ app.use("/api/adm/zonas", checkauth.VerifyRol(["AppAdmin"]), require("./routes/z
 app.use("/api/adm/planes", checkauth.VerifyRol(["AppAdmin"]), require("./routes/planes"));
 app.use("/api/adm/atracciones", checkauth.VerifyRol(["AppAdmin"]), require("./routes/atracciones"));
 app.use("/api/adm/puestos_comida", checkauth.VerifyRol(["AppAdmin"]), require("./routes/puestos_comida"));
+app.use("/api/adm/tipos_entrada", checkauth.VerifyRol(["AppAdmin"]), require("./routes/tipos_entrada"));
+app.use("/api/adm/entradas", checkauth.VerifyRol(["AppAdmin"]), require("./routes/entradas"));
 
 module.exports = app;
