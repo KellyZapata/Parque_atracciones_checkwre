@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
 
 let UsuarioSchema = new  mongoose.Schema({
     nombres: { type: String, required: true },
@@ -11,10 +10,8 @@ let UsuarioSchema = new  mongoose.Schema({
     cargo: { type: String, required: false },
     codigo_autenticacion: { type: String, required: false },
     roles: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Rol' } ],
-    recuperar_clave: { type: String, required: false, default: false },
+    recuperar_clave: { type: String, required: false, default: false, unique: true },
     recuperar_clave_exp: { type: Date, required: false},
 });
-
-UsuarioSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Usuario', UsuarioSchema, 'usuarios');

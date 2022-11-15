@@ -8,7 +8,7 @@ router.post("/signup", (req,res, next)=>{
   AuthController.Signup(req, res);
 })
 
-router.post("/login" , (req, res ,  next)=>{
+router.post("/login/:token?" , (req, res ,  next)=>{
   AuthController.Login(req, res);
 })
 
