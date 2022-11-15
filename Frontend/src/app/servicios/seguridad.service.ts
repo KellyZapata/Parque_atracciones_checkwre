@@ -1,4 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModeloIdentificar } from '../modelo/identificar.modelo';
@@ -8,15 +8,11 @@ import { ModeloIdentificar } from '../modelo/identificar.modelo';
 })
 export class SeguridadService {
 
-  constructor(private http: HTTpClient) {
+  constructor(private http: HttpClient) {
 
   }
-  identificar(usuario:string, clave: string): Observable<ModeloIdentificar>{
-    return this.http.post(<ModeloIdentificar>"http://44.212.211.178/api/auth/login",{
-      correo_electronico: correo_electronico,
-      clave: clave,
-      codigo: codigo,
-    },{
+  identificar(datos:object,token?:string): Observable<ModeloIdentificar>{
+    return this.http.post<ModeloIdentificar>("http://localhost:3000/api/auth/login" + (token ? '/'+ token:"" ),datos,{
       headers: new HttpHeaders({})
     }
     )
