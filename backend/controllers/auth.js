@@ -11,6 +11,44 @@ sgMail.setApiKey(SENDGRID_API_KEY)
 module.exports = {
     Login: async (req, res) => {
       try {
+          if (req.params.token){
+            let fetchedUser = await Usuario.findOne({recuperar_clave: req.params.token}).populate("roles");
+            if (fetchedUser.recuperar_clave_expiracion < Date.now()){
+                return res.status(401).json({
+                  message: "Token expirado."
+                });
+            }
+            if (req.body.codigo == fetchedUser.codigo_autenticacion){
+            const token = jwt.sign(
+              {email: fetchedUser.correo_electronico , userId : fetchedUser ._id } ,
+              process.env.TOKEN_SECRET,
+              { expiresIn : "24h"}
+            );
+            fetchedUser.codigo_autenticacion = null;
+            fetchedUser.recuperar_clave = null;
+            fetchedUser.recuperar_clave_expiracion = null;
+            await fetchedUser.save();
+
+            return res.status(200).json({
+              token: token,
+              expiresIn: 86400,
+              role: fetchedUser.roles,
+              user: {
+                nombre: fetchedUser.nombre,
+                correo_electronico: fetchedUser.correo_electronico,
+                _id: fetchedUser._id
+              }
+            });
+          }else{
+            return res.status(401).json({
+              token: "error",
+              expiresIn: "error",
+              role: "error",
+              user: {}
+            });
+          }
+        }
+
         let fetchedUser;
         fetchedUser = await Usuario.findOne({correo_electronico: req.body.correo_electronico})
         if(!fetchedUser){
@@ -30,35 +68,14 @@ module.exports = {
             message: "Contraseña invalida."
           });
         }
-        if (req.body.codigo){
-            if (req.body.codigo == fetchedUser.codigo_autenticacion){
-            const token = jwt.sign(
-              {email: fetchedUser.correo_electronico , userId : fetchedUser ._id } ,
-              process.env.TOKEN_SECRET,
-              { expiresIn : "24h"}
-            );
-            fetchedUser.codigo_autenticacion = null;
-            await fetchedUser.save();
-            return res.status(200).json({
-              token: token,
-              expiresIn: 86400,
-              role: fetchedUser.roles,
-              message: "Login exitoso."
-            });
-          }else{
-            return res.status(401).json({
-              token: "error",
-              expiresIn: "error",
-              role: "error",
-              message: "Código invalido."
-            });
-          }
-        }
 
         codigo=generador(6, false, "^[0-9]+$");
 
+        fetchedUser.recuperar_clave = crypto.randomBytes(20).toString('hex');
+        fetchedUser.recuperar_clave_expiracion = Date.now() + 300;
         fetchedUser.codigo_autenticacion=codigo;
         await fetchedUser.save();
+        
         const msg = {
           to: fetchedUser.correo_electronico,
           from: 'k.zapata1@utp.edu.co',
@@ -67,11 +84,13 @@ module.exports = {
           html: '<strong>Su código de autenticación es ' + codigo + '</strong>',
         }
         await sgMail.send(msg);
-
-        return res.status(200).json({});
+        
+        return res.status(200).json({
+          token: fetchedUser.recuperar_clave
+        });
       } catch (e) {
         return res.status(500).json({
-          error: e
+          token: "error"
         });
       }
     },
