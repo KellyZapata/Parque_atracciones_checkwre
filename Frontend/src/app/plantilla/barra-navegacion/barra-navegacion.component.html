@@ -3,16 +3,19 @@
       <a routerLink="/inicio" class="brand-logo">Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/seguridad/login">Iniciar sesión</a></li>
-        <li><a routerLink="/seguridad/signin">Registrarse</a></li>
+        <li *ngIf="seInicioSesion"><a routerLink="">Cuenta</a></li>
+        <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/login">Iniciar sesión</a></li>
+        <li *ngIf="seInicioSesion"><a routerLink="/seguridad/logout">Cerrar Sesión</a></li>
+        <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/signin">Registrarse</a></li>
       </ul>
     </div>
-  
+
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a routerLink="/seguridad/login">Iniciar sesión</a></li>
-    <li><a routerLink="/seguridad/signin">Registrarse</a></li>
+    <li *ngIf="seInicioSesion"><a routerLink="">Cuenta</a></li>
+    <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/login">Iniciar sesión</a></li>
+    <li *ngIf="seInicioSesion"><a routerLink="/seguridad/logout">Cerrar Sesión</a></li>
+    <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/signin">Registrarse</a></li>
   </ul>
 
-  

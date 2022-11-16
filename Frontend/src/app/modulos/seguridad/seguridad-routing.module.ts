@@ -4,6 +4,7 @@ import { IdentificacionComponent } from './identificacion/identificacion.compone
 import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { LoginComponent } from './login/login.component';
+import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login/:token',
     component: LoginComponent,
+  },
+  {
+    path: 'cerrarsesion',
+    component: CerrarSesionComponent,
   },
 ];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
     private route: ActivatedRoute,
+    private router: Router,
     ) {}
 
     ngOnInit(): void {
@@ -31,7 +32,9 @@ export class LoginComponent implements OnInit {
     };
     this.servicioSeguridad.identificar(datos,this.token).subscribe(
       (datos: any) => {
-        alert(datos.token);
+        this.servicioSeguridad.AlmacenarSesion(datos);
+    this.router.navigateByUrl('/inicio')
+
       },
       (error: any) => {
         alert(error.message);

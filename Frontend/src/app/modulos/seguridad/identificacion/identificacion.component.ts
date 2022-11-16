@@ -28,7 +28,7 @@ export class IdentificacionComponent implements OnInit {
       "clave": this.fgValidador.controls["clave"].value,
     }
 
-    this.servicioSeguridad.identificar(datos).subscribe((datos:any) => {
+    this.servicioSeguridad.obtenerCodigo(datos).subscribe((datos:any) => {
       this._router.navigateByUrl('seguridad/login/'+ datos.token);
     }, (error: any) => {
       alert(error.message);
