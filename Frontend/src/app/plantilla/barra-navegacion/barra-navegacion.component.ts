@@ -17,13 +17,10 @@ export class BarraNavegacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs = this.seguridadServicio.ObtenerDatosUsuarioEnsesion().subscribe((datos:ModeloIdentificar)=>{
-      if (datos){
-        console.log(datos);
+      if (Object.keys(datos).length > 0){
         this.seInicioSesion = true;
       }else{
         this.seInicioSesion = false;
-
-
       }
     })
   }

@@ -24,7 +24,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'cerrarsesion',
+    path: 'logout',
     component: CerrarSesionComponent,
   },
 ];
