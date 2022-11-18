@@ -17,11 +17,7 @@ export class BarraNavegacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs = this.seguridadServicio.ObtenerDatosUsuarioEnsesion().subscribe((datos:ModeloIdentificar)=>{
-      if (Object.keys(datos).length > 0){
-        this.seInicioSesion = true;
-      }else{
-        this.seInicioSesion = false;
-      }
+    this.seInicioSesion = datos.estaIdentificado;
     })
   }
 

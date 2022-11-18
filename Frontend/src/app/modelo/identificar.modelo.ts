@@ -3,4 +3,5 @@ export class ModeloIdentificar{
   token?: string;
   expiresIn?: number;
   user?: string;
+  estaIdentificado: boolean = false;
 }

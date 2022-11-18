@@ -1,1 +1,63 @@
-<p>registrarse works!</p>
+<div class="section"></div>
+<main>
+
+    <div class="container">
+      <div id="id1" class="z-depth-1 grey lighten-4 row">
+
+        <form [formGroup]="fgValidador" (ngSubmit)="Registro()" class="col s12" >
+          <div class='row'>
+            <div class='col s12'>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input formControlName="nombres" class='validate' type='text' name='nombres' id='nombres' />
+              <label for='nombres'>Ingresa tu nombre</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input formControlName="apellidos" class='validate' type='text' name='apellidos' id='apellidos' />
+              <label for='apellidos'>Ingresa tu apellido</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input formControlName="telefono_celular" class='validate' type='text' name='telefono_celular' id='telefono_celular' />
+              <label for='telefono_celular'>Ingresa tu número de teléfono celular</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input formControlName="telefono_fijo" class='validate' type='text' name='telefono_fijo' id='telefono_fijo' />
+              <label for='telefono_fijo'>Ingresa tu número de teléfono fijo</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input formControlName="correo_electronico" class='validate' type='text' name='correo_electronico' id='correo_electronico' />
+              <label for='correo_electronico'>Ingresa tu correo electrónico</label>
+            </div>
+          </div>
+            <br />
+
+            <div class='row'>
+              <button [disabled]="!fgValidador.valid" type='submit' name='btn_registrarse' class='col s12 btn btn-large waves-effect indigo'>Registrarse</button>
+            </div>
+
+        </form>
+      </div>
+    </div>
+
+
+
+  <div class="section"></div>
+  <div class="section"></div>
+</main>
+
+

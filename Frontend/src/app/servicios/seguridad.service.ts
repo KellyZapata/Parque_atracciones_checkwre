@@ -14,47 +14,55 @@ export class SeguridadService {
   constructor(private http: HttpClient) {
     this.VerificarSesionActual();
   }
-  VerificarSesionActual(){
+  VerificarSesionActual() {
     let datos = this.ObtenerInformacionSesion();
-    if (datos){
-      this.datosUsurarioEnSesion.next(datos);
+    if (datos) {
+      this.RefrescarDatosSesion(datos);
     }
   }
 
-  ObtenerDatosUsuarioEnsesion(){
+  RefrescarDatosSesion(datos: ModeloIdentificar) {
+    this.datosUsurarioEnSesion.next(datos);
+  }
+
+
+  ObtenerDatosUsuarioEnsesion() {
     return this.datosUsurarioEnSesion.asObservable();
   }
 
-  obtenerCodigo(datos:object){
-    return this.http.post("http://localhost:3000/api/auth/login", datos,{
+  obtenerCodigo(datos: object) {
+    return this.http.post("http://localhost:3000/api/auth/login", datos, {
       headers: new HttpHeaders({})
     })
   }
 
-  identificar(datos:object,token:string): Observable<ModeloIdentificar>{
-    return this.http.post<ModeloIdentificar>("http://localhost:3000/api/auth/login" + (token ? '/'+ token:"" ),datos,{
+  identificar(datos: object, token: string): Observable<ModeloIdentificar> {
+    return this.http.post<ModeloIdentificar>("http://localhost:3000/api/auth/login" + (token ? '/' + token : ""), datos, {
       headers: new HttpHeaders({})
     }
     )
 
   }
-  AlmacenarSesion(datos: ModeloIdentificar){
+  AlmacenarSesion(datos: ModeloIdentificar) {
+    datos.estaIdentificado = true;
     let stringDAtos = JSON.stringify(datos);
-    localStorage.setItem('datosSesion',stringDAtos);
+    localStorage.setItem('datosSesion', stringDAtos);
+    this.RefrescarDatosSesion(datos);
   }
-  ObtenerInformacionSesion(){
+  ObtenerInformacionSesion() {
     let datosString = localStorage.getItem('datosSesion');
-    if(datosString){
+    if (datosString) {
       let datos = JSON.parse(datosString);
       return datos;
-    }else{
+    } else {
       return null;
     }
   }
-  EliminarInformacionSesion(){
+  EliminarInformacionSesion() {
     localStorage.removeItem('datosSesion');
+    this.RefrescarDatosSesion(new ModeloIdentificar());
   }
-  SeHaIniciadoSesion(){
+  SeHaIniciadoSesion() {
     let datosString = localStorage.getItem('datosSesion');
     return datosString;
   }
