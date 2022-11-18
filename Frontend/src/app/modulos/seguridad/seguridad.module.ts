@@ -8,6 +8,7 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LoginComponent } from './login/login.component';
     IdentificacionComponent,
     RecuperarClaveComponent,
     RegistrarseComponent,
-    LoginComponent
+    LoginComponent,
+    CerrarSesionComponent
   ],
   imports: [
     CommonModule,
