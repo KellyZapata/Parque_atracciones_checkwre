@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
 @Component({
   selector: 'app-recuperar-clave',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecuperarClaveComponent implements OnInit {
 
-  constructor() { }
+  fgValidador: FormGroup = this.fb.group({
+    correo_electronico: ['',[Validators.required, Validators.email]],
+  });
+  constructor(
+  private fb: FormBuilder,
+  private servicioSeguridad: SeguridadService,
+  private router: Router,) { }
 
   ngOnInit(): void {
+  }
+  RecuperarClave(){
+    let correo_electronico = this.fgValidador.controls["correo_electronico"].value;
+    this.servicioSeguridad.RecuperarClaveToken(correo_electronico).subscribe(
+      (datos: any) =>{alert("Se ha enviado un mensaje a tu correo electrónico")
+      this.router.navigateByUrl('/inicio')
+    },
+      (error: any)=>{alert(error.message)}
+    );
   }
 
 }

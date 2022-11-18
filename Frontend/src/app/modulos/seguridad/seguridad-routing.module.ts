@@ -5,6 +5,7 @@ import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.compo
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { LoginComponent } from './login/login.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { CambiarClaveComponent } from './recuperar-clave/cambiar-clave/cambiar-clave.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,14 @@ const routes: Routes = [
   {
     path: 'logout',
     component: CerrarSesionComponent,
+  },
+  {
+    path: 'resetpassword',
+    component: RecuperarClaveComponent,
+  },
+  {
+    path: 'resetpassword/:token',
+    component: CambiarClaveComponent,
   },
 ];
 

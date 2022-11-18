@@ -66,5 +66,17 @@ export class SeguridadService {
     let datosString = localStorage.getItem('datosSesion');
     return datosString;
   }
+  RecuperarClaveToken(correo_electronico: string){
+    return this.http.post("http://localhost:3000/api/auth/resetpassword", {correo_electronico: correo_electronico}, {
+      headers: new HttpHeaders({})
+    })
+
+  }
+  RecuperarClave(token: string, clave: string){
+    return this.http.post("http://localhost:3000/api/auth/resetpassword/"+ token, {clave: clave}, {
+      headers: new HttpHeaders({})
+    })
+
+  }
 }
 
