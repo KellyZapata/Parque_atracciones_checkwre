@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { CambiarClaveComponent } from './recuperar-clave/cambiar-clave/cambiar-clave.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
     RecuperarClaveComponent,
     RegistrarseComponent,
     LoginComponent,
-    CerrarSesionComponent
+    CerrarSesionComponent,
+    CambiarClaveComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@
     <div class="container">
       <div id="id1" class="z-depth-1 grey lighten-4 row">
 
-        <form [formGroup]="fgValidador" (ngSubmit)="Identificarusuario()" class="col s12" >
+        <form [formGroup]="fgValidador" (ngSubmit)="CambiarClave()" class="col s12" >
           <div class='row'>
             <div class='col s12'>
             </div>
@@ -12,15 +12,15 @@
 
           <div class='row'>
             <div class='input-field col s12'>
-              <input formControlName="codigo" class='validate' type='text' name='codigo' id='codigo' />
-              <label for='codigo'>Ingresa tu código</label>
+              <input formControlName="clave" class='validate' type='text' name='clave' id='clave' />
+              <label for='clave'>Ingresa tu nueva contraseña</label>
             </div>
           </div>
 
             <br />
 
             <div class='row'>
-              <button [disabled]="!fgValidador.valid" type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+              <button [disabled]="!fgValidador.valid" type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Cambiar contraseña</button>
             </div>
 
         </form>
@@ -32,4 +32,6 @@
   <div class="section"></div>
   <div class="section"></div>
 </main>
+
+
 
