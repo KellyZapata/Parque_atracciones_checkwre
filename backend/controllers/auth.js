@@ -154,7 +154,7 @@ module.exports = {
           from: 'k.zapata1@utp.edu.co',
           subject: 'Recuperar contraseña',
           text: 'Ingrese a este enlace para recuperar contraseña' + fetchedUser.recuperar_clave,
-          html: '<strong>Ingrese a este enlace para recuperar contraseña ' + fetchedUser.recuperar_clave + '</strong>',
+          html: '<strong>Ingrese a este enlace para recuperar contraseña http://localhost:4200/seguridad/resetpassword/' + fetchedUser.recuperar_clave + '</strong>',
         }
         await sgMail.send(msg);
 

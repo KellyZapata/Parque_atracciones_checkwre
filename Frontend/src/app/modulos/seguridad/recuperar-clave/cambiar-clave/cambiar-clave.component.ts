@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cambiar-clave',
@@ -30,10 +31,21 @@ CambiarClave(){
    let clave= this.fgValidador.controls['clave'].value;
    this.servicioSeguridad.RecuperarClave(token,clave).subscribe(
     (datos: any) => {
-      alert("Contraseña actualizada.");
+      Swal.fire({
+        title: 'Exito',
+        text: 'Se ha cambiado la clave con exito',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
+      this.router.navigateByUrl('/inicio');
     },
     (error: any) => {
-      alert("Se ha producido un error.");
+      Swal.fire({
+        title: 'Error',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
     }
    );
 
