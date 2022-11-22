@@ -1,37 +1,28 @@
-<div class="section"></div>
-<main>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="fgValidador" (ngSubmit)="CambiarClave()">
 
-    <div class="container">
-      <div id="id1" class="z-depth-1 grey lighten-4 row">
-
-        <form [formGroup]="fgValidador" (ngSubmit)="CambiarClave()" class="col s12" >
-          <div class='row'>
-            <div class='col s12'>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="clave">Contraseña</label>
+            <input type="password" id="clave" class="form-control form-control-lg" formControlName="clave"
+              placeholder="Ingresa tu contraseña" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="clave" class='validate' type='text' name='clave' id='clave' />
-              <label for='clave'>Ingresa tu nueva contraseña</label>
-            </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Actualizar contraseña </button>
+
           </div>
-
-            <br />
-
-            <div class='row'>
-              <button [disabled]="!fgValidador.valid" type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Cambiar contraseña</button>
-            </div>
 
         </form>
       </div>
     </div>
+  </div>
+</section>
 
 
-
-  <div class="section"></div>
-  <div class="section"></div>
-</main>
 
 
 

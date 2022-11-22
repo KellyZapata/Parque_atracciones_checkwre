@@ -1,15 +1,15 @@
-#id1 {
-    display: inline-block;
-    padding: 32px 48px 0px 48px;
-    border: 1px solid #EEE;
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
 }
-
-#id2 {
-    float: right;
+.h-custom {
+height: calc(100% - 73px);
 }
-
-.container {
-
-    display: flex;
-    justify-content: center;
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
 }

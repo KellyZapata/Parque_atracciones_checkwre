@@ -1,35 +1,24 @@
-<div class="section"></div>
-<main>
 
-    <div class="container">
-      <div id="id1" class="z-depth-1 grey lighten-4 row">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="fgValidador" (ngSubmit)="Identificarusuario()">
 
-        <form [formGroup]="fgValidador" (ngSubmit)="Identificarusuario()" class="col s12" >
-          <div class='row'>
-            <div class='col s12'>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="codigo">Código de autenticación</label>
+            <input type="text" id="codigo" class="form-control form-control-lg" formControlName="codigo"
+              placeholder="Ingresa el código que llegó a tu correo electrónico" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="codigo" class='validate' type='text' name='codigo' id='codigo' />
-              <label for='codigo'>Ingresa tu código</label>
-            </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Enviar</button>
+
           </div>
-
-            <br />
-
-            <div class='row'>
-              <button [disabled]="!fgValidador.valid" type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
-            </div>
 
         </form>
       </div>
     </div>
-
-
-
-  <div class="section"></div>
-  <div class="section"></div>
-</main>
-
+  </div>
+</section>

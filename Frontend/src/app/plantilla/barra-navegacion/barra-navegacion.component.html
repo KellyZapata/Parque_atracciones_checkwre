@@ -1,21 +1,14 @@
-<nav class="nav-extended">
-    <div class="nav-wrapper">
-      <a routerLink="/inicio" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li *ngIf="seInicioSesion"><a routerLink="">Cuenta</a></li>
-        <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/login">Iniciar sesión</a></li>
-        <li *ngIf="seInicioSesion"><a routerLink="/seguridad/logout">Cerrar Sesión</a></li>
-        <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/signin">Registrarse</a></li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Checkwre</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="seInicioSesion"><a class="nav-link" routerLink="">Cuenta</a></li>
+        <li class="nav-item" *ngIf="!seInicioSesion"><a class="nav-link" routerLink="/seguridad/login">Iniciar sesión</a></li>
+        <li class="nav-item" *ngIf="seInicioSesion"><a class="nav-link" routerLink="/seguridad/logout">Cerrar Sesión</a></li>
+        <li class="nav-item" *ngIf="!seInicioSesion"><a class="nav-link" routerLink="/seguridad/signin">Registrarse</a></li>
       </ul>
     </div>
-
   </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li *ngIf="seInicioSesion"><a routerLink="">Cuenta</a></li>
-    <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/login">Iniciar sesión</a></li>
-    <li *ngIf="seInicioSesion"><a routerLink="/seguridad/logout">Cerrar Sesión</a></li>
-    <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/signin">Registrarse</a></li>
-  </ul>
-

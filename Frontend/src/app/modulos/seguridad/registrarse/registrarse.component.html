@@ -1,63 +1,53 @@
-<div class="section"></div>
-<main>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="fgValidador" (ngSubmit)="Registro()">
 
-    <div class="container">
-      <div id="id1" class="z-depth-1 grey lighten-4 row">
-
-        <form [formGroup]="fgValidador" (ngSubmit)="Registro()" class="col s12" >
-          <div class='row'>
-            <div class='col s12'>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="nombres">Nombre</label>
+            <input type="text" id="nombres" class="form-control form-control-lg" formControlName="nombres"
+              placeholder="Ingresa tu Nombre" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="nombres" class='validate' type='text' name='nombres' id='nombres' />
-              <label for='nombres'>Ingresa tu nombre</label>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" class="form-control form-control-lg" formControlName="apellidos"
+              placeholder="Ingresa tu apellido" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="apellidos" class='validate' type='text' name='apellidos' id='apellidos' />
-              <label for='apellidos'>Ingresa tu apellido</label>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="telefono_celular">Teléfono celular</label>
+            <input type="text" id="telefono_celular" class="form-control form-control-lg" formControlName="telefono_celular"
+              placeholder="Ingresa tu teléfono celular" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="telefono_celular" class='validate' type='text' name='telefono_celular' id='telefono_celular' />
-              <label for='telefono_celular'>Ingresa tu número de teléfono celular</label>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="telefono_fijo">Teléfono fijo</label>
+            <input type="text" id="telefono_fijo" class="form-control form-control-lg" formControlName="telefono_fijo"
+              placeholder="Ingresa tu teléfono fijo" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="telefono_fijo" class='validate' type='text' name='telefono_fijo' id='telefono_fijo' />
-              <label for='telefono_fijo'>Ingresa tu número de teléfono fijo</label>
-            </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="correo_electronico">Correo electrónico</label>
+            <input type="text" id="correo_electronico" class="form-control form-control-lg" formControlName="correo_electronico"
+              placeholder="Ingresa tu correo electrónico" />
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input formControlName="correo_electronico" class='validate' type='text' name='correo_electronico' id='correo_electronico' />
-              <label for='correo_electronico'>Ingresa tu correo electrónico</label>
-            </div>
-          </div>
-            <br />
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarse</button>
 
-            <div class='row'>
-              <button [disabled]="!fgValidador.valid" type='submit' name='btn_registrarse' class='col s12 btn btn-large waves-effect indigo'>Registrarse</button>
-            </div>
+          </div>
 
         </form>
       </div>
     </div>
-
-
-
-  <div class="section"></div>
-  <div class="section"></div>
-</main>
+  </div>
+</section>
 
 
